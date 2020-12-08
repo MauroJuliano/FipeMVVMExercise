@@ -1,5 +1,5 @@
 //
-//  BrandTableViewCell.swift
+//  carInfoTableViewCell.swift
 //  FipeMVVMExercise
 //
 //  Created by Lestad on 2020-11-30.
@@ -7,7 +7,8 @@
 
 import UIKit
 
-class BrandTableViewCell: UITableViewCell {
+class carInfoTableViewCell: UITableViewCell {
+    
     @IBOutlet var nameLabel: UILabel!
     
     override func awakeFromNib() {
@@ -20,7 +21,12 @@ class BrandTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-    func setup(brand: Model){
+    func setup(brand: Brand){
         nameLabel.text = brand.name
     }
+    func setupModel(model: Model) {
+        nameLabel.text = model.name
+    }
+    
+    
 }
