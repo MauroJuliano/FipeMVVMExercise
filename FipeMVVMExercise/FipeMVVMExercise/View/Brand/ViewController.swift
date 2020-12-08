@@ -9,8 +9,8 @@ import UIKit
 
 class ViewController: UIViewController {
     @IBOutlet var brandTableView: UITableView!
-    
-    var viewRequest = typeModelViewModel()
+   
+    var viewRequest = CarInfoRequest()
     var brandDelegateDataSource: BrandTableViewDelegateDataSource?
     
     override func viewDidLoad() {

@@ -1,21 +1,22 @@
 //
-//  typeModel.swift
+//  yearModelTableViewDelegateDataSource.swift
 //  FipeMVVMExercise
 //
-//  Created by Lestad on 2020-11-30.
+//  Created by Lestad on 2020-12-08.
 //
 
 import Foundation
 import UIKit
 
-class typeModelTableViewDelegateDataSource: NSObject, UITableViewDelegate, UITableViewDataSource {
+class YearModelTableViewDelegateDataSource: NSObject, UITableViewDelegate, UITableViewDataSource {
     
     var modelRequest = CarInfoRequest()
-    var View = typeModelViewController()
+    var View = YearViewController()
     
-    init(modelViewModel: CarInfoRequest, view: typeModelViewController){
+    init(modelViewModel: CarInfoRequest, view: YearViewController){
         self.modelRequest = modelViewModel
         self.View = view
+       // super.init(nibName: nil, bundle: nil)
     }
     required init?(coder aDecoder: NSCoder)
     {
@@ -23,10 +24,11 @@ class typeModelTableViewDelegateDataSource: NSObject, UITableViewDelegate, UITab
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        if let viewcontroller = UIStoryboard(name: "Year", bundle: nil).instantiateInitialViewController() as? YearViewController{
+        if let viewcontroller = UIStoryboard(name: "CarroSelecionado", bundle: nil).instantiateInitialViewController() as? CarroSelecionadoViewController{
+            print("here?")
             viewcontroller.brand = modelRequest.modelArray[indexPath.row]
-            viewcontroller.marcas = View.marcaID
+            viewcontroller.marcaID = View.marcas
+            viewcontroller.anoID = View.ano
             View.navigationController?.pushViewController(viewcontroller, animated: true)
         }
     }
@@ -36,7 +38,7 @@ class typeModelTableViewDelegateDataSource: NSObject, UITableViewDelegate, UITab
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if let cell = tableView.dequeueReusableCell(withIdentifier: "carInfoCell") as? carInfoTableViewCell {
+        if let cell = tableView.dequeueReusableCell(withIdentifier: "yearInfo") as? YearTableViewCell {
             
             let carInfo = modelRequest.modelArray[indexPath.row]
             cell.setupModel(model: carInfo)

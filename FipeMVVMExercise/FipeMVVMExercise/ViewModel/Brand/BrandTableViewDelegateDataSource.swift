@@ -10,10 +10,10 @@ import UIKit
 
 class BrandTableViewDelegateDataSource: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
-    var brandViewModel = typeModelViewModel()
+    var brandViewModel = CarInfoRequest()
     var View = ViewController()
     
-    init(brandViewModel: typeModelViewModel, view: ViewController) {
+    init(brandViewModel: CarInfoRequest, view: ViewController) {
         self.brandViewModel = brandViewModel
         self.View = view
         super.init(nibName: nil, bundle: nil)

@@ -11,13 +11,16 @@ class typeModelViewController: UIViewController {
 
     @IBOutlet var typeModelTableView: UITableView!
     var brand: Model?
-    var viewRequest = typeModelViewModel()
+    var marcaID: String?
+    var viewRequest = CarInfoRequest()
     var typeModelDelegateDataSource: typeModelTableViewDelegateDataSource?
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         if let id = brand?.id {
             getCarInfo(id: id)
+            marcaID = id
         }
         self.title = "Modelos"
         let nib = UINib(nibName: "carInfo", bundle: nil)
